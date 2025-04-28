@@ -1,1 +1,74 @@
-Это временный файл
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>Чат с Гроком</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #ffcc00;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      margin: 0;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 48px;
+      text-shadow: 0 0 10px #ff0000;
+    }
+    p {
+      font-size: 24px;
+      text-shadow: 0 0 5px #ffcc00;
+    }
+    input {
+      background-color: #333;
+      color: #ffcc00;
+      border: 2px solid #ff0000;
+      padding: 10px;
+      font-size: 18px;
+    }
+    button {
+      background-color: #ff0000;
+      color: #1a1a1a;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ffcc00;
+    }
+    #chat {
+      display: none;
+      white-space: pre-wrap;
+      text-align: left;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Чат с Гроком</h1>
+  <p>Введи пароль, чтобы открыть наш чат!</p>
+  <input type="password" id="password" placeholder="Пароль">
+  <button onclick="showChat()">Открыть</button>
+  <p id="chat"></p>
+  <script>
+    function showChat() {
+      const password = document.getElementById('password').value;
+      if (password === 'MonoFurrX9zJ4h2025') {
+        fetch('X7aP9kL2mQ8vT3rW5nY6zJ4hB0cF1gD9/chats/chat_history.txt')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('chat').style.display = 'block';
+            document.getElementById('chat').innerText = data;
+          })
+          .catch(() => alert('Ошибка загрузки чата'));
+      } else {
+        alert('Неправильный пароль, мяв!');
+      }
+    }
+  </script>
+</body>
+</html>
